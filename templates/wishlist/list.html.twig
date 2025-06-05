@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Wishlist
+{% endblock %}
+
+{% block body %}
+	<section class="text-gray-400 bg-gray-900 body-font container px-5 py-14 mx-auto">
+		<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">My Wishlist</h1>
+		
+		{% if wishlistItems|length > 0 %}
+			<div class="container px-5 py-24 mx-auto">
+				<div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+					{% for item in wishlistItems %}
+						{# <li>{{ item.game.name }}</li> #}
+						{% include 'game/_game_item.html.twig' with {'game': item.getGame} %}
+					{% endfor %}
+				</div>
+			</div>
+		{% else %}
+			<p>Votre wishlist est vide.</p>
+		{% endif %}
+	</section>
+{% endblock %}
